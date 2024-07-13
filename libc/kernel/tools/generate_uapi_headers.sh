@@ -151,7 +151,7 @@ fi
 if [[ -d "${KERNEL_DIR}/linux-stable" ]]; then
   src_dir="linux-stable"
 else
-  src_dir="common"
+  src_dir=""
 fi
 
 if [[ ${KERNEL_DOWNLOAD} -eq 1 ]]; then

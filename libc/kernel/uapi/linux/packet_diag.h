@@ -83,7 +83,7 @@ struct packet_diag_mclist {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u16 pdmc_type;
   __u16 pdmc_alen;
-  __u8 pdmc_addr[MAX_ADDR_LEN];
+  __u8 pdmc_addr[32];
 };
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 struct packet_diag_ring {

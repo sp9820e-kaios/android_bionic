@@ -1110,6 +1110,15 @@ LOCAL_NATIVE_COVERAGE := $(bionic_coverage)
 include $(BUILD_STATIC_LIBRARY)
 
 # ========================================================
+# libsprd_jemalloc.a
+# ========================================================
+ifeq ($(TARGET_USE_SPRD_JEMALLOC), true)
+include $(CLEAR_VARS)
+LOCAL_PREBUILT_LIBS := libsprd_jemalloc.a
+include $(BUILD_MULTI_PREBUILT)
+endif
+
+# ========================================================
 # libc_ndk.a
 # Compatibility library for the NDK. This library contains
 # all the parts of libc that are safe to statically link.
@@ -1165,7 +1174,11 @@ LOCAL_WHOLE_STATIC_LIBRARIES_arm := libc_aeabi
 LOCAL_CXX_STL := none
 
 ifneq ($(MALLOC_IMPL),dlmalloc)
+ifeq ($(TARGET_USE_SPRD_JEMALLOC), true)
+LOCAL_WHOLE_STATIC_LIBRARIES += libsprd_jemalloc
+else
 LOCAL_WHOLE_STATIC_LIBRARIES += libjemalloc
+endif
 endif
 
 $(eval $(call patch-up-arch-specific-flags,LOCAL_CFLAGS,libc_common_cflags))
@@ -1303,7 +1316,11 @@ LOCAL_ADDITIONAL_DEPENDENCIES := $(libc_common_additional_dependencies)
 LOCAL_WHOLE_STATIC_LIBRARIES := libc_common
 
 ifneq ($(MALLOC_IMPL),dlmalloc)
+ifeq ($(TARGET_USE_SPRD_JEMALLOC), true)
+LOCAL_WHOLE_STATIC_LIBRARIES += libsprd_jemalloc
+else
 LOCAL_WHOLE_STATIC_LIBRARIES += libjemalloc
+endif
 endif
 
 LOCAL_CXX_STL := none
@@ -1361,7 +1378,11 @@ LOCAL_SHARED_LIBRARIES := libdl
 LOCAL_WHOLE_STATIC_LIBRARIES := libc_common
 
 ifneq ($(MALLOC_IMPL),dlmalloc)
+ifeq ($(TARGET_USE_SPRD_JEMALLOC), true)
+LOCAL_WHOLE_STATIC_LIBRARIES += libsprd_jemalloc
+else
 LOCAL_WHOLE_STATIC_LIBRARIES += libjemalloc
+endif
 endif
 
 LOCAL_CXX_STL := none

@@ -1,0 +1,3290 @@
+/****************************************************************************
+ ****************************************************************************
+ ***
+ ***   This header was automatically generated from a Linux kernel header
+ ***   of the same name, to make information necessary for userspace to
+ ***   call into the kernel available to libc.  It contains only constants,
+ ***   structures, and macros generated from the original header, and thus,
+ ***   contains no copyrightable information.
+ ***
+ ***   To edit the content of this header, modify the corresponding
+ ***   source file (e.g. under external/kernel-headers/original/) then
+ ***   run bionic/libc/kernel/tools/update_all.py
+ ***
+ ***   Any manual change here will be lost the next time this script will
+ ***   be run. You've been warned!
+ ***
+ ****************************************************************************
+ ****************************************************************************/
+#ifndef _ISP_DRV_KERNEL_H_
+#define _ISP_DRV_KERNEL_H_
+#define BUF_ALIGN(w) ((((w) + 512 + 1024 - 1) >> 10) << 10)
+#define ISP_AEM_STATIS_BUF_SIZE BUF_ALIGN(0xA000)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define ISP_AEM_STATIS_BUF_NUM 4
+#define ISP_AFM_STATIS_BUF_SIZE BUF_ALIGN(0x78)
+#define ISP_AFM_STATIS_BUF_NUM 4
+#define ISP_AFL_STATIS_BUF_SIZE BUF_ALIGN(0x25A0 * 10)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define ISP_AFL_STATIS_BUF_NUM 4
+#define ISP_PDAF_STATIS_BUF_SIZE BUF_ALIGN(0x43600)
+#define ISP_PDAF_STATIS_BUF_NUM 4
+#define ISP_BINNING_STATIS_BUF_SIZE BUF_ALIGN(0x64000)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define ISP_BINNING_STATIS_BUF_NUM 4
+#define ISP_HIST_STATIS_BUF_NUM 4
+#define ISP_HIST_ITEMS 256
+#define ISP_HIST_STATIS_BUF_SIZE BUF_ALIGN(ISP_HIST_ITEMS * 4)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define ISP_HIST2_ROI_CNT 4
+#define ISP_HIST2_STATIS_BUF_NUM 4
+#define ISP_HIST2_ITEMS 64
+#define ISP_HIST2_STATIS_BUF_SIZE BUF_ALIGN(ISP_HIST2_ITEMS * 4)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define ISP_PINGPANG_FRGB_GAMC_NODE 129
+#define ISP_PINGPANG_FRGB_GAMC_NUM 257
+#define NR3_BUF_NUM 8
+#define POSTERIZE_NUM 8
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define ISP_PINGPANG_YUV_YGAMMA_NUM 129
+#define ISP_AFM_WIN_NUM_V1 25
+#define ISP_CCE_MATRIX_TAB_MAX 9
+#define ISP_AWBM_ITEM 1024
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define ISP_RAW_AEM_ITEM 1024
+#define ISP_AFM_WIN_NUM 10
+#define ISP_VST_IVST_NUM 1024
+#define PDAF_PPI_NUM 64
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define PDAF_CORRECT_GAIN_NUM 128
+#define v_counter_interval 524288
+#define BLOCK_SCENE_DEF 0xfefe
+enum isp_img_output_id {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_IMG_PREVIEW = 0,
+  ISP_IMG_VIDEO,
+  ISP_IMG_CAPTURE,
+  ISP_IMG_STATISTICS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_OUTPUT_IMG_TOTAL,
+};
+enum isp_rtn {
+  ISP_IMG_TX_DONE = 0x20,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_IMG_NO_MEM,
+  ISP_IMG_TX_ERR,
+  ISP_IMG_SYS_BUSY,
+  ISP_IMG_TIMEOUT,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_IMG_TX_STOP,
+};
+enum isp_irq_type {
+  ISP_IRQ_AEM_DONE = 0x20,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_IRQ_STATIS,
+  ISP_IRQ_IMG,
+  ISP_IRQ_CFG_BUF,
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum isp_block {
+  ISP_BLOCK_1D_LSC,
+  ISP_BLOCK_2D_LSC,
+  ISP_BLOCK_ANTI_FLICKER_NEW,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_BLOCK_ARBITER,
+  ISP_BLOCK_BRIGHTNESS,
+  ISP_BLOCK_BLC,
+  ISP_BLOCK_BPC,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_BLOCK_CCE,
+  ISP_BLOCK_YUV_CDN,
+  ISP_BLOCK_CFA,
+  ISP_BLOCK_CMC,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_BLOCK_COMMON,
+  ISP_BLOCK_CONTRAST,
+  ISP_BLOCK_CSA,
+  ISP_BLOCK_DISPATCH,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_BLOCK_EDGE,
+  ISP_BLOCK_FETCH,
+  ISP_BLOCK_YUV_FETCH,
+  ISP_BLOCK_GRGB,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_BLOCK_HIST,
+  ISP_BLOCK_HIST2,
+  ISP_BLOCK_HSV,
+  ISP_BLOCK_HUE,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_BLOCK_IIRCNR,
+  ISP_BLOCK_NLC,
+  ISP_BLOCK_NLM,
+  ISP_BLOCK_NOISE_FILTER,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_BLOCK_PDAF_CORRECT,
+  ISP_BLOCK_PGG,
+  ISP_BLOCK_POST_BLC,
+  ISP_BLOCK_POST_CDN,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_BLOCK_PRE_CDN,
+  ISP_BLOCK_PSTRZ,
+  ISP_BLOCK_RLSC,
+  ISP_BLOCK_RGBG,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_BLOCK_RGBG_DITHER,
+  ISP_BLOCK_STORE,
+  ISP_BLOCK_STORE_VID,
+  ISP_BLOCK_STORE_OUT,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_BLOCK_UVD,
+  ISP_BLOCK_YDELAY,
+  ISP_BLOCK_GAMMA,
+  ISP_BLOCK_YGAMMA,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_BLOCK_YNR,
+  ISP_BLOCK_AWB,
+  ISP_BLOCK_BINNING,
+  ISP_BLOCK_RAW_AEM,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_BLOCK_RAW_AFM,
+  DCAM_BLOCK_PDAF,
+  DCAM_BLOCK_BLC,
+  DCAM_BLOCK_2D_LSC,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  DCAM_BLOCK_RAW_AEM,
+};
+enum isp_blc_property {
+  ISP_PRO_BLC_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_BLC_SLICE_SIZE,
+  ISP_PRO_BLC_SLICE_INFO,
+  DCAM_PRO_BLC_BLOCK,
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum isp_2d_lsc_property {
+  ISP_PRO_2D_LSC_BLOCK,
+  ISP_PRO_2D_LSC_BYPASS,
+  ISP_PRO_2D_LSC_PARAM_UPDATE,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_2D_LSC_POS,
+  ISP_PRO_2D_LSC_GRID_SIZE,
+  ISP_PRO_2D_LSC_LOAD_BUF_SEL,
+  ISP_PRO_2D_LSC_SLICE_SIZE,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_2D_LSC_TRANSADDR,
+  ISP_PRO_2D_LSC_SLICE,
+  DCAM_PRO_2D_LSC_BLOCK,
+  DCAM_PRO_2D_LSC_TRANSADDR,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+enum isp_1d_lsc_property {
+  ISP_PRO_1D_LSC_BLOCK,
+  ISP_PRO_1D_LSC_SLICE_SIZE,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_1D_LSC_POS,
+  ISP_PRO_1D_LSC_SLICE_PARAM,
+};
+enum isp_rlsc_property {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_RLSC_BLOCK,
+  ISP_PRO_RLSC_SLICE_SIZE,
+  ISP_PRO_RLSC_POS,
+  ISP_PRO_RLSC_SLICE_PARAM,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+enum isp_awb_property {
+  ISP_PRO_AWB_BLOCK,
+  ISP_PRO_AWBM_STATISTICS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_AWBM_BYPASS,
+  ISP_PRO_AWBM_MODE,
+  ISP_PRO_AWBM_SKIP_NUM,
+  ISP_PRO_AWBM_SKIP_NUM_CLR,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_AWBM_BLOCK_OFFSET,
+  ISP_PRO_AWBM_BLOCK_SIZE,
+  ISP_PRO_AWBM_SHIFT,
+  ISP_PRO_AWBM_THR_BYPASS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_AWBM_WR_POS,
+  ISP_PRO_AWBM_NW_POS,
+  ISP_PRO_AWBM_CLCTOR_POS,
+  ISP_PRO_AWBM_CLCTOR_PIXEL_NUM,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_AWBM_THR_VALUE,
+  ISP_PRO_AWBM_MEM_ADDR,
+  ISP_PRO_AWBC_BYPASS,
+  ISP_PRO_AWBC_GAIN,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_AWBC_THRD,
+  ISP_PRO_AWBC_GAIN_OFFSET,
+};
+enum isp_bpc_property {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_BPC_BLOCK,
+};
+enum isp_anti_flicker_new_property {
+  ISP_PRO_ANTI_FLICKER_NEW_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_ANTI_FLICKER_NEW_BYPASS,
+};
+enum isp_arbiter_property {
+  ISP_PRO_ARBITER_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+enum isp_binning_property {
+  ISP_PRO_BINNING_BLOCK,
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum isp_brightness_property {
+  ISP_PRO_BRIGHT_BLOCK,
+};
+enum isp_cce_property {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_CCE_BLOCK_MATRIX,
+};
+enum isp_cdn_property {
+  ISP_PRO_YUV_CDN_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+enum isp_cfa_property {
+  ISP_PRO_CFA_BLOCK,
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum isp_cmc_property {
+  ISP_PRO_CMC_BLOCK,
+};
+enum isp_common_property {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_COMMON_BLOCK,
+  ISP_PRO_COMMON_VERSION,
+  ISP_PRO_COMMON_STATUS0,
+  ISP_PRO_COMMON_STATUS1,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_COMMON_STATUS2,
+  ISP_PRO_COMMON_CH0_FETCH_SEL,
+  ISP_PRO_COMMON_CH0_SIZER_SEL,
+  ISP_PRO_COMMON_CH0_STORE_SEL,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_COMMON_CH1_FETCH_SEL,
+  ISP_PRO_COMMON_CH1_SIZER_SEL,
+  ISP_PRO_COMMON_CH1_STORE_SEL,
+  ISP_PRO_COMMON_FETCH_COLOR_SPACE_SEL,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_COMMON_STORE_COLOR_SPACE_SEL,
+  ISP_PRO_COMMON_AWBM_POS_SEL,
+  ISP_PRO_COMMON_CH0_AEM2_POS,
+  ISP_PRO_COMMON_CH0_Y_AFM_POS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_COMMON_CH1_AEM2_POS,
+  ISP_PRO_COMMON_CH1_Y_AFM_POS,
+  ISP_PRO_COMMON_LBUF_OFFSET,
+  ISP_PRO_COMMON_SHADOW_ALL_CTRL,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_COMMON_AWBM_SHADOW,
+  ISP_PRO_COMMON_AE_SHADOW,
+  ISP_PRO_COMMON_AF_SHADOW,
+  ISP_PRO_COMMON_AFL_SHADOW,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_COMMON_COMM_SHADOW,
+  ISP_PRO_COMMON_3A_SINGLE_FRAME_CTRL,
+  ISP_PRO_COMMON_START,
+  ISP_PRO_COMMON_IN_MODE,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_COMMON_OUT_MODE,
+  ISP_PRO_COMMON_FETCH_ENDIAN,
+  ISP_PRO_COMMON_BPC_ENDIAN,
+  ISP_PRO_COMMON_STORE_ENDIAN,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_COMMON_FETCH_DATA_FORMAT,
+  ISP_PRO_COMMON_STORE_FORMAT,
+  ISP_PRO_COMMON_BURST_SIZE,
+  ISP_PRO_COMMON_MEM_SWITCH,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_COMMON_SHADOW,
+  ISP_PRO_COMMON_SHADOW_ALL,
+  ISP_PRO_COMMON_BAYER_MODE,
+  ISP_PRO_COMMON_INT_REGISTER,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_COMMON_INT_CLEAR,
+  ISP_PRO_COMMON_GET_INT_RAW,
+  ISP_PRO_COMMON_PMU_RAW_MASK,
+  ISP_PRO_COMMON_HW_MASK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_COMMON_HW_ENABLE,
+  ISP_PRO_COMMON_PMU_SEL,
+  ISP_PRO_COMMON_SW_ENABLE,
+  ISP_PRO_COMMON_PREVIEW_STOP,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_COMMON_SET_SHADOW_CONTROL,
+  ISP_PRO_COMMON_SHADOW_CONTROL_CLEAR,
+  ISP_PRO_COMMON_AXI_STOP,
+  ISP_PRO_COMMON_SLICE_CNT_ENABLE,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_COMMON_PREFORM_CNT_ENABLE,
+  ISP_PRO_COMMON_SET_SLICE_NUM,
+  ISP_PRO_COMMON_GET_SLICE_NUM,
+  ISP_PRO_COMMON_PERFORM_CNT_RSTATUS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_COMMON_PERFORM_CNT_STATUS,
+};
+enum isp_contrast_property {
+  ISP_PRO_CONTRAST_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+enum isp_csa_property {
+  ISP_PRO_CSA_BLOCK,
+  ISP_PRO_CSA_BYPASS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_CSA_FACTOR,
+};
+enum isp_dispatch_property {
+  ISP_PRO_DISPATCH_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_DISPATCH_CH0_BAYER,
+  ISP_PRO_DISPATCH_CH1_BAYER,
+  ISP_PRO_DISPATCH_CH0_SIZE,
+  ISP_PRO_DISPATCH_CH1_SIZE,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_DISPATCH_HW_CTRL_CH0,
+  ISP_PRO_DISPATCH_DLY,
+  ISP_PRO_DISPATCH_DLY1,
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum isp_fetch_property {
+  ISP_PRO_FETCH_RAW_BLOCK,
+  ISP_PRO_FETCH_YUV_BLOCK,
+  ISP_PRO_FETCH_BYPASS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_FETCH_START,
+  ISP_PRO_FETCH_SUBTRACT,
+  ISP_PRO_FETCH_COLOR_FORMAT,
+  ISP_PRO_FETCH_SLICE_SIZE,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_FETCH_SLICE_Y_ADDR,
+  ISP_PRO_FETCH_SLICE_Y_PITCH,
+  ISP_PRO_FETCH_SLICE_U_ADDR,
+  ISP_PRO_FETCH_SLICE_U_PITCH,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_FETCH_MIPI_WORD_INFO,
+  ISP_PRO_FETCH_MIPI_BYTE_INFO,
+  ISP_PRO_FETCH_SLICE_V_ADDR,
+  ISP_PRO_FETCH_SLICE_V_PITCH,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_FETCH_START_ISP,
+  ISP_PRO_FETCH_TRANSADDR,
+};
+enum isp_edge_property {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_EDGE_BLOCK,
+  ISP_PRO_EDGE_BYPASS,
+  ISP_PRO_EDGE_PARAM,
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum isp_gamma_property {
+  ISP_PRO_GAMMA_BLOCK,
+  ISP_PRO_GAMMA_BYPASS,
+  ISP_PRO_GAMMA_RGB,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_GAMMA_BUF_SEL,
+  ISP_PRO_GAMMA_NODE,
+};
+enum isp_grgb_property {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_GRGB_BLOCK,
+  ISP_PRO_GRGB_BYPASS,
+  ISP_PRO_GRGB_PARAM,
+  ISP_PRO_GRGB_CHK_SUM_CLR,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_GRGB_THRD,
+};
+enum isp_hist_property {
+  ISP_PRO_HIST_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_HIST_BYPASS,
+  ISP_PRO_HIST_MODE,
+  ISP_PRO_HIST_SKIP_NUM,
+  ISP_PRO_HIST_SKIP_NUM_CLR,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_HIST_CFG_RDY,
+};
+enum isp_hist2_property {
+  ISP_PRO_HIST2_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_HIST2_BYPASS,
+  ISP_PRO_HIST2_MODE,
+  ISP_PRO_HIST2_SKIP_NUM,
+  ISP_PRO_HIST2_SKIP_NUM_CLR,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_HIST2_ROI,
+  ISP_PRO_HIST2_CFG_RDY,
+};
+enum isp_hsv_property {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_HSV_BLOCK,
+  ISP_PRO_HSV_BYPASS,
+  ISP_PRO_HSV_BUF_SEL,
+  ISP_PRO_HSV_CURVE,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+enum isp_hua_property {
+  ISP_PRO_HUE_BLOCK,
+  ISP_PRO_HUE_BYPASS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_HUE_THETA,
+  ISP_PRO_HUE_FACTOR,
+};
+enum isp_iircnr_property {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_IIRCNR_BLOCK,
+  ISP_PRO_IIRCNR_BYPASS,
+  ISP_PRO_IIRCNR_MODE,
+  ISP_PRO_IIRCNR_THR,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_IIRCNR_YMD,
+  ISP_PRO_IIRCNR_CHK_SUM_CLR,
+  ISP_PRO_YRANDOM_SEED,
+  ISP_PRO_YRANDOM_MODE,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_YRANDOM_INIT,
+  ISP_PRO_YRANDOM_BYPASS,
+  ISP_PRO_YRANDOM_OFFSET,
+  ISP_PRO_YRANDOM_SHIFT,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_YRANDOM_TAKEBIT,
+  ISP_PRO_YRANDOM_BLOCK,
+};
+enum isp_nlc_property {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_NLC_BLOCK,
+  ISP_PRO_NLC_BYPASS,
+  ISP_PRO_NLC_R_NODE,
+  ISP_PRO_NLC_G_NODE,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_NLC_B_NODE,
+  ISP_PRO_NLC_L_NODE,
+  ISP_PRO_NLC_NODE,
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum isp_nlm_property {
+  ISP_PRO_VST_BLOCK,
+  ISP_PRO_NLM_BLOCK,
+  ISP_PRO_IVST_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+enum isp_noise_filter_property {
+  ISP_PRO_NOISE_FILTER_BLOCK,
+  ISP_PRO_NOISE_FILTER_BYPASS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_NOISE_FILTER_PARAM,
+  ISP_PRO_NOISE_FILTER_SEED_INIT,
+  ISP_PRO_NOISE_FILTER_SEED,
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum isp_pre_glb_gain_property {
+  ISP_PRO_PRE_GLB_GAIN_BLOCK,
+};
+enum isp_ynr_property {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_YNR_BLOCK,
+  ISP_PRO_YNR_BYPASS,
+  ISP_PRO_YNR_PARAM,
+  ISP_PRO_YNR_START_POS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+enum isp_pdaf_property {
+  DCAM_PRO_PDAF_BLOCK,
+  DCAM_PRO_PDAF_BYPASS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  DCAM_PRO_PDAF_SKIP_NUM_CLR,
+  DCAM_PRO_PDAF_PARAM,
+  DCAM_PRO_PDAF_ADDR,
+  DCAM_PRO_PDAF_ADDR_L,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  DCAM_PRO_PDAF_ADDR_R,
+  DCAM_PRO_PDAF_SET_MODE,
+  DCAM_PRO_PDAF_SET_SKIP_NUM,
+  DCAM_PRO_PDAF_SET_ROI,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  DCAM_PRO_PDAF_SET_PPI_INFO,
+  DCAM_PRO_PDAF_SET_EXTRACTOR_BYPASS,
+};
+enum isp_post_blc_property {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_POST_BLC_BLOCK,
+};
+enum isp_post_cdn_property {
+  ISP_PRO_POST_CDN_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_POST_CDN_BYPASS,
+  ISP_PRO_POST_CDN_DOWNSAMPLE_BYPASS,
+  ISP_PRO_POST_CDN_MODE,
+  ISP_PRO_POST_CDN_WRITEBACK_EN,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_POST_CDN_UVJOINT,
+  ISP_PRO_POST_CDN_MEDIAN_MODE,
+  ISP_PRO_POST_CDN_ADAPT_MED_THR,
+  ISP_PRO_POST_CDN_THR,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_POST_CDN_R_SEG,
+  ISP_PRO_POST_CDN_DISTW,
+  ISP_PRO_POST_CDN_SLICE_START_ROW_MOD4,
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum isp_pstrz_property {
+  ISP_PRO_POSTERIZE_BLOCK,
+  ISP_PRO_PSTRZ_BYPASS,
+  ISP_PRO_PSTRZ_LEVEL,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_PSTRZ_CHK_SUM_CLR,
+};
+enum isp_rgb_gain_property {
+  ISP_PRO_RGB_GAIN_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_RGB_GAIN_BYPASS,
+  ISP_PRO_RGB_GAIN_GLOBAL_GAIN,
+  ISP_PRO_RGB_GAIN_RGB_GAIN,
+  ISP_PRO_RGB_GAIN_RANDOM_PARAM,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_RGB_GAIN_RANDOM_INIT,
+};
+enum isp_rgb_edither_property {
+  ISP_PRO_RGB_EDITHER_RANDOM_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_RGB_EDITHER_RANDOM_INIT,
+};
+enum isp_store_property {
+  ISP_PRO_STORE_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_STORE_CEE_BLOCK,
+  ISP_PRO_STORE0_BLOCK,
+  ISP_PRO_STORE_PREVIEW_BLOCK,
+  ISP_PRO_STORE_VIDEO_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_STORE_CAPTURE_BLOCK,
+  ISP_PRO_SCL0_PRE_BLOCK,
+  ISP_PRO_SCL_PRE_BLOCK,
+  ISP_PRO_SCL_VID_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_SCL_CAP_BLOCK,
+  ISP_PRO_STORE_BYPASS,
+  ISP_PRO_STORE_SUBTRACT,
+  ISP_PRO_STORE_COLOR_FORMAT,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_STORE_SLICE_SIZE,
+  ISP_PRO_STORE_Y_ADDR,
+  ISP_PRO_STORE_Y_PITCH,
+  ISP_PRO_STORE_U_ADDR,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_STORE_U_PITCH,
+  ISP_PRO_STORE_V_ADDR,
+  ISP_PRO_STORE_V_PITCH,
+  ISP_PRO_STORE_INT_CTRL,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_STORE_SHADOW_CLR_SEL,
+  ISP_PRO_STORE_SHADOW_CLR,
+  ISP_PRO_STORE_BORDER,
+  ISP_PRO_STORE_MIRROR_EN,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_STORE_SPEED2X,
+  ISP_PRO_STORE_ENDIAN,
+  ISP_PRO_STORE_MIPI,
+  ISP_PRO_STORE_BURST_LEN_SEL,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_STORE_CEE_BYPASS,
+};
+enum isp_uvd_property {
+  ISP_PRO_UVD_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_UVD_CHK_SUM_CLR,
+};
+enum isp_y_delay_property {
+  ISP_PRO_Y_DELAY_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+enum isp_ygamma_property {
+  ISP_PRO_YGAMMA_BLOCK,
+  ISP_PRO_YGAMMA_BYPASS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_YGAMMA_BUF_SEL,
+};
+enum isp_yuv_precdn_property {
+  ISP_PRO_PRE_CDN_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_PRE_CDN_BYPASS,
+  ISP_PRO_PRE_CDN_MODE,
+  ISP_PRO_PRE_CDN_MEDIAN_WRITEBACK,
+  ISP_PRO_PRE_CDN_MEDIAN_MODE,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_PRE_CDN_DEN_STREN,
+  ISP_PRO_PRE_CDN_UV_JOINT,
+  ISP_PRO_PRE_CDN_THR,
+  ISP_PRO_PRE_CDN_SEGYUV,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_PRE_CDN_DISTW,
+};
+enum isp_3dnr_property {
+  ISP_PRO_3DNR_PRE_BYPASS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_3DNR_PRE_COMMON,
+  ISP_PRO_3DNR_PRE_BLOCK,
+  ISP_PRO_3DNR_CAP_BYPASS,
+  ISP_PRO_3DNR_CAP_SINGLE_COMMON,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_3DNR_CAP_MULTI_COMMON,
+  ISP_PRO_3DNR_CAP_BLOCK,
+};
+enum isp_raw_aem_property {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_RAW_AEM_BLOCK,
+  ISP_PRO_RAW_AEM_BYPASS,
+  ISP_PRO_RAW_AEM_MODE,
+  ISP_PRO_RAW_AEM_STATISTICS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_RAW_AEM_SKIP_NUM,
+  ISP_PRO_RAW_AEM_SHIFT,
+  ISP_PRO_RAW_AEM_OFFSET,
+  ISP_PRO_RAW_AEM_BLK_SIZE,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_RAW_AEM_SLICE_SIZE,
+  DCAM_PRO_RAW_AEM_BLOCK,
+  DCAM_PRO_RAW_AEM_MODE,
+  DCAM_PRO_RAW_AEM_SKIP_NUM,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  DCAM_PRO_RAW_AEM_SHIFT,
+  DCAM_PRO_RAW_AEM_OFFSET,
+  DCAM_PRO_RAW_AEM_BLK_SIZE,
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum isp_raw_af_property {
+  ISP_PRO_RGB_AFM_BYPASS,
+  ISP_PRO_RGB_AFM_BLOCK,
+  ISP_PRO_RGB_AFM_FRAME_SIZE,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_RGB_AFM_IIR_NR_CFG,
+  ISP_PRO_RGB_AFM_MODULE_CFG,
+  ISP_PRO_RGB_AFM_WIN,
+  ISP_PRO_RGB_AFM_WIN_NUM,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_PRO_RGB_AFM_MODE,
+  ISP_PRO_RGB_AFM_SKIP_NUM,
+  ISP_PRO_RGB_AFM_SKIP_NUM_CLR,
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum isp_dev_capability {
+  ISP_CAPABILITY_CONTINE_SIZE,
+  ISP_CAPABILITY_TIME,
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum isp_chip_id {
+  ISP_CHIP_ID_INVALID = 0x00,
+  ISP_CHIP_ID_SC8820 = 0xA55A8820,
+  ISP_CHIP_ID_SHARKL = 0xA55A9630,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_CHIP_ID_PIKE = 0xA55A7720,
+  ISP_CHIP_ID_TSHARK2 = 0xA55A9838,
+  ISP_CHIP_ID_TSHARK3
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_io_param {
+  unsigned int isp_id;
+  unsigned int scene_id;
+  unsigned int sub_block;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int property;
+  void __user * property_param;
+};
+struct isp_addr {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned long chn0;
+  unsigned long chn1;
+  unsigned long chn2;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_img_size {
+  unsigned int width;
+  unsigned int height;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_lsc_addr {
+  unsigned int phys_addr;
+  unsigned int virt_addr;
+  unsigned int buf_len;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_img_offset {
+  unsigned int x;
+  unsigned int y;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_coord {
+  unsigned int start_x;
+  unsigned int start_y;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int end_x;
+  unsigned int end_y;
+};
+struct img_offset {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int x;
+  unsigned int y;
+};
+struct awbc_param {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int r;
+  unsigned int b;
+  unsigned int gr;
+  unsigned int gb;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct awbc_rgb {
+  unsigned int r;
+  unsigned int g;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int b;
+};
+struct cmc_matrix {
+  unsigned short val[9];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short reserved;
+};
+struct isp_common_lbuf_param {
+  unsigned int comm_lbuf_offset;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ydly_lbuf_offset;
+};
+struct isp_common_sdw_ctrl {
+  unsigned int comm_cfg_rdy;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int shadow_mctrl;
+  unsigned int sdw_ctrl;
+};
+struct isp_dev_raw_aem_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bypass;
+  unsigned int skip_num;
+  struct img_offset offset;
+  unsigned int aem_avgshf;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct isp_img_size blk_size;
+  struct isp_img_size slice_size;
+  unsigned ddr_wr_num;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct yuv_param {
+  unsigned int y;
+  unsigned int u;
+  unsigned int v;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct uv_param {
+  unsigned int u;
+  unsigned int v;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_img_addr {
+  unsigned long y_phy_addr;
+  unsigned long uv_phy_addr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_3dnr_fast_me_info {
+  struct isp_img_size cur_size;
+  struct isp_img_size ref_szie;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int skip_line;
+  unsigned int ping_pong_en;
+};
+struct isp_dev_3dnr_common {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int nr3_bypass;
+  unsigned int pre_done_bypass_mode;
+  unsigned int pre_all_done_mode;
+  unsigned int cap_all_done_mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int pre_sec_frm_mode;
+  unsigned int pre_fst_frm_mode;
+  unsigned int cap_shadow_clr_sel;
+  unsigned int pre_shadow_clr_sel;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int pre_start_mode;
+  unsigned int sof_pre_sw;
+  unsigned int sof_cap_sw;
+  unsigned int pre_shadow_clr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int cap_shadow_clr;
+  unsigned int frm_cnt_clr;
+};
+struct isp_dev_3dnr_pre_common_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int nr3_bypass;
+  struct isp_img_size pre_size;
+  struct isp_img_addr cur_addr[2];
+  struct isp_img_addr ref_addr[2];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_3dnr_pre_crop {
+  unsigned int bypass;
+  struct isp_img_size src_size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct isp_img_size dst_size;
+  struct img_offset offset;
+};
+struct isp_dev_3dnr_pre_mem_ctrl {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ft_ref_addr_mode;
+  unsigned int pre_mv_mode;
+  unsigned int yuv_mode;
+  unsigned int mv_x_sw;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int mv_y_sw;
+  struct isp_img_size cur_size;
+  struct isp_img_size ft_ref_y_size;
+  struct isp_img_size ft_ref_uv_size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct isp_img_addr ft_cur_addr[2];
+  struct isp_img_addr ft_ref_addr[2];
+  unsigned int ft_pitch;
+  unsigned int flush_line_num;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int hblank_num;
+  unsigned int cur_buf_sel;
+  unsigned int ref_buf_sel;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_3dnr_pre_param_info {
+  unsigned int blend_bypass;
+  struct yuv_param yuv_src_weight;
+  struct yuv_param yuv_noise_thr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct yuv_param yuv_noise_weight;
+  unsigned int u_thr_min;
+  unsigned int u_thr_max;
+  unsigned int v_thr_min;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int v_thr_max;
+  struct yuv_param yuv_threshold[9];
+  struct yuv_param yuv_intens_gain[9];
+  unsigned int gradient_w[11];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct uv_param uv_thr_factor[4];
+  struct uv_param uv_div_factor[4];
+  unsigned int r_value[3];
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_3dnr_cap_common_info {
+  unsigned int nr3_bypass;
+  struct isp_img_size cap_size;
+  struct isp_img_addr cur_addr[2];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct isp_img_addr ref_addr[2];
+  struct isp_img_addr des_addr[2];
+};
+struct isp_dev_3dnr_scaler_ctrl {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int path_eb;
+  unsigned int clk_switch;
+  unsigned int isp_sw_switch_en;
+  unsigned int isp_frame_skip;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int sc_bypass;
+  unsigned int sc_y_ver_tap;
+  unsigned int sc_uv_ver_tap;
+  unsigned int uv_sync_y;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int all_pass;
+  unsigned int odata_mode;
+  unsigned int deci_y_eb;
+  unsigned int deci_y;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int deci_x_eb;
+  unsigned int deci_x;
+  struct isp_img_size src_size;
+  struct isp_img_size des_size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct img_offset trim0_start;
+  struct isp_img_size trim0_size;
+  unsigned int scl_ip_int;
+  unsigned int scl_ip_rmd;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int scl_cip_int;
+  unsigned int scl_cip_rmd;
+  unsigned int scl_factor_in;
+  unsigned int scl_factor_out;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct img_offset trim1_start;
+  struct isp_img_size trim1_size;
+  unsigned int scl_ver_ip_int;
+  unsigned int scl_ver_ip_rmd;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int scl_ver_cip_int;
+  unsigned int scl_ver_cip_rmd;
+  unsigned int scl_ver_factor_in;
+  unsigned int scl_ver_factor_out;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_3dnr_cap_mem_ctrl {
+  unsigned int ft_ref_addr_mode;
+  unsigned int yuv_mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int roi_mode;
+  unsigned int last_line_mode_en;
+  unsigned int first_line_mode_en;
+  unsigned int data_toyuv_en;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int chk_sum_clr_en;
+  unsigned int y_sla_bypass;
+  unsigned int uv_sla_bypass;
+  unsigned int back_toddr_en;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int scaler_mode;
+  unsigned int mv_x_sw;
+  unsigned int mv_y_sw;
+  struct isp_img_size frm_size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct isp_img_addr st_ref_addr[2];
+  struct isp_img_addr ft_cur_addr[2];
+  struct isp_img_addr ft_ref_addr[2];
+  unsigned int ft_cur_pitch;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ft_ref_pitch;
+  unsigned int st_ref_pitch;
+  struct isp_img_size ft_ref_y_size;
+  struct isp_img_size ft_ref_uv_size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int right_border;
+  unsigned int left_border;
+  unsigned int down_border;
+  unsigned int up_border;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct isp_img_size st_ref_size;
+  unsigned int blend_mv_x_sw;
+  unsigned int blend_mv_y_sw;
+  unsigned int y_en_start_col;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int y_en_start_row;
+  unsigned int y_en_end_col;
+  unsigned int y_en_end_row;
+  unsigned int uv_en_start_col;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int uv_en_start_row;
+  unsigned int uv_en_end_col;
+  unsigned int uv_en_end_row;
+  unsigned int start_col;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int start_row;
+  struct isp_img_size global_size;
+  unsigned int cap_pre_mode;
+  unsigned int cap_stop;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ft_cur_buf_sel;
+  unsigned int ft_ref_buf_sel;
+  unsigned int st_ref_buf_sel;
+  unsigned int cap_blend_cnt;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_3dnr_cap_param_info {
+  unsigned int blend_bypass;
+  struct isp_img_size frm_size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct yuv_param yuv_src_weight;
+  struct yuv_param yuv_noise_thr;
+  struct yuv_param yuv_noise_weight;
+  unsigned int u_thr_min;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int u_thr_max;
+  unsigned int v_thr_min;
+  unsigned int v_thr_max;
+  struct yuv_param yuv_threshold[9];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct yuv_param yuv_intens_gain[9];
+  unsigned int gradient_w[11];
+  struct uv_param uv_thr_factor[4];
+  struct uv_param uv_div_factor[4];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int r_value[3];
+};
+struct isp_dev_1d_lsc_info {
+  unsigned int bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int buf_sel;
+  unsigned int radius_step;
+  unsigned int center_r0c0_row_y;
+  unsigned int center_r0c0_col_x;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int center_r0c1_row_y;
+  unsigned int center_r0c1_col_x;
+  unsigned int center_r1c0_row_y;
+  unsigned int center_r1c0_col_x;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int center_r1c1_row_y;
+  unsigned int center_r1c1_col_x;
+  unsigned int init_r_r0c1;
+  unsigned int init_r_r0c0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int init_r_r1c1;
+  unsigned int init_r_r1c0;
+  unsigned int init_r2_r0c0;
+  unsigned int init_r2_r0c1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int init_r2_r1c0;
+  unsigned int init_r2_r1c1;
+  unsigned int init_dr2_r0c0;
+  unsigned int init_dr2_r0c1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int init_dr2_r1c0;
+  unsigned int init_dr2_r1c1;
+  unsigned int data_ptr[2];
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct lnc_1d_slice_param {
+  uint32_t start_col;
+  uint32_t start_row;
+  uint32_t r[4];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  uint32_t r2[4];
+  uint32_t dr2[4];
+};
+struct isp_dev_2d_lsc_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bypass;
+  unsigned int offset_x;
+  unsigned int offset_y;
+  unsigned int loader_enable;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int grid_pitch;
+  unsigned int grid_width;
+  unsigned int grid_x_num;
+  unsigned int grid_y_num;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int grid_num_t;
+  unsigned int load_chn_sel;
+  unsigned int endian;
+  struct isp_img_size slice_size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int relative_x;
+  unsigned int relative_y;
+  unsigned int q_value[2][5];
+  unsigned int buf_addr[2];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int buf_len;
+  unsigned int weight_num;
+  unsigned int data_ptr[2];
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_anti_flicker_new_info {
+  unsigned int bypass;
+  unsigned int mode;
+  unsigned int skip_frame_num;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int afl_stepx;
+  unsigned int afl_stepy;
+  unsigned int frame_num;
+  unsigned int start_col;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int end_col;
+  unsigned int mem_init_addr;
+  unsigned int step_x_region;
+  unsigned int step_y_region;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int step_x_start_region;
+  unsigned int step_x_end_region;
+  unsigned int mem_init_addr_region;
+  unsigned int skip_num_clr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int afl_glb_total_num;
+  unsigned int afl_region_total_num;
+  struct isp_img_size img_size;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_anti_flicker_info {
+  unsigned int bypass;
+  unsigned int mode;
+  unsigned int skip_frame_num;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int line_step;
+  unsigned int frame_num;
+  unsigned int vheight;
+  unsigned int start_col;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int end_col;
+  unsigned int afl_total_num;
+  struct isp_img_size img_size;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_arbiter_info {
+  unsigned int fetch_raw_endian;
+  unsigned int fetch_bit_reorder;
+  unsigned int fetch_raw_word_change;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int fetch_yuv_endian;
+  unsigned int fetch_yuv_word_change;
+};
+struct isp_dev_awb_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int awbc_bypass;
+  struct awbc_param gain;
+  struct awbc_rgb thrd;
+  struct awbc_param gain_offset;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_binning4awb_info {
+  unsigned int bypass;
+  unsigned int bin_mode_sel;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int vx;
+  unsigned int mem_fifo_clr;
+  unsigned int hx;
+  unsigned int bin_skip_num;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int addr_ddr_init;
+  unsigned int ddr_wr_num;
+  unsigned int skip_num_clr;
+  struct isp_img_size img_size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_blc_info {
+  unsigned int bypass;
+  unsigned int mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int r;
+  unsigned int b;
+  unsigned int gr;
+  unsigned int gb;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_bpc_info {
+  unsigned int bypass;
+  unsigned int bpc_mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int edge_hv_mode;
+  unsigned int edge_rd_mode;
+  unsigned int bad_pixel_pos_out_en;
+  unsigned int rd_retain_num;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int rd_max_len_sel;
+  unsigned int wr_max_len_sel;
+  unsigned int double_badpixel_th[4];
+  unsigned int three_badpixel_th[4];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int four_badpixel_th[4];
+  unsigned int texture_th;
+  unsigned int flat_th;
+  unsigned int shift[3];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int edge_ratio_hv;
+  unsigned int edge_ratio_rd;
+  unsigned int high_offset;
+  unsigned int low_offset;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int high_coeff;
+  unsigned int low_coeff;
+  unsigned int min_coeff;
+  unsigned int max_coeff;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short intercept_b[8];
+  unsigned short slope_k[8];
+  unsigned short lut_level[8];
+  unsigned int map_addr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bad_map_hw_fifo_clr_en;
+  unsigned int bad_pixel_num;
+  unsigned int bad_pixel_pos_out_addr;
+  unsigned int bad_pixel_pos_fifo_clr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bpc_map_fifo_clr;
+};
+struct new_bpc_slice_param {
+  unsigned int bad_pixel_num;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bpc_map_addr;
+  unsigned int bpc_pos_addr;
+  unsigned int slice_start_raw;
+  unsigned int slice_start_col;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int slice_roi_start_raw;
+  unsigned int slice_roi_start_col;
+  unsigned int slice_roi_end_raw;
+  unsigned int slice_roi_end_col;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_brightness_info {
+  unsigned int bypass;
+  unsigned int factor;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_cce_info {
+  unsigned int bypass;
+  unsigned short matrix[ISP_CCE_MATRIX_TAB_MAX];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short reserved0;
+  unsigned short y_offset;
+  unsigned short u_offset;
+  unsigned short v_offset;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short reserved1;
+};
+struct isp_dev_yuv_cdn_info {
+  unsigned int bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int filter_bypass;
+  unsigned int median_writeback_en;
+  unsigned int median_mode;
+  unsigned int gaussian_mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int median_thr;
+  unsigned int median_thru0;
+  unsigned int median_thru1;
+  unsigned int median_thrv0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int median_thrv1;
+  unsigned int rangewu[31];
+  unsigned int rangewv[31];
+  unsigned int level;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_cfa_info {
+  unsigned int bypass;
+  unsigned int css_bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int grid_thr;
+  unsigned int min_grid_new;
+  unsigned int grid_gain_new;
+  unsigned int strong_edge_thr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int uni_dir_intplt_thr_new;
+  unsigned int weight_control_bypass;
+  unsigned int cdcr_adj_factor;
+  unsigned int smooth_area_thr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int readblue_high_sat_thr;
+  unsigned int grid_dir_weight_t1;
+  unsigned int grid_dir_weight_t2;
+  unsigned int round_diff_03_thr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int low_lux_03_thr;
+  unsigned int round_diff_12_thr;
+  unsigned int low_lux_12_thr;
+  unsigned int css_weak_edge_thr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int css_edge_thr;
+  unsigned int css_texture1_thr;
+  unsigned int css_texture2_thr;
+  unsigned int css_uv_val_thr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int css_uv_diff_thr;
+  unsigned int css_gray_thr;
+  unsigned int css_pix_similar_thr;
+  unsigned int css_green_edge_thr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int css_green_weak_edge_thr;
+  unsigned int css_green_tex1_thr;
+  unsigned int css_green_tex2_thr;
+  unsigned int css_green_flat_thr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int css_edge_corr_ratio_r;
+  unsigned int css_edge_corr_ratio_b;
+  unsigned int css_text1_corr_ratio_r;
+  unsigned int css_text1_corr_ratio_b;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int css_text2_corr_ratio_r;
+  unsigned int css_text2_corr_ratio_b;
+  unsigned int css_flat_corr_ratio_r;
+  unsigned int css_flat_corr_ratio_b;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int css_wedge_corr_ratio_r;
+  unsigned int css_wedge_corr_ratio_b;
+  unsigned int css_alpha_for_tex2;
+  unsigned int css_skin_u_top[2];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int css_skin_u_down[2];
+  unsigned int css_skin_v_top[2];
+  unsigned int css_skin_v_down[2];
+  unsigned int gbuf_addr_max;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_cmc10_info {
+  unsigned int bypass;
+  struct cmc_matrix matrix;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_common_info {
+  unsigned int fetch_sel_0;
+  unsigned int store_sel_0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int fetch_sel_1;
+  unsigned int store_sel_1;
+  unsigned int fetch_color_space_sel;
+  unsigned int store_color_space_sel;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ch0_path_ctrl;
+  unsigned int bin_pos_sel;
+  unsigned int ram_mask;
+  unsigned int gclk_ctrl_rrgb;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int gclk_ctrl_yiq_frgb;
+  unsigned int gclk_ctrl_yuv;
+  unsigned int gclk_ctrl_scaler_3dnr;
+  struct isp_common_lbuf_param lbuf_off;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct isp_common_sdw_ctrl shadow_ctrl_ch0;
+  struct isp_common_sdw_ctrl shadow_ctrl_ch1;
+  unsigned int afl_version_sel_ch0;
+  unsigned int res[3];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int yuv_disp_path_sel_sdw_en;
+  unsigned int store_cce_path_sel;
+  unsigned int store_cce_en;
+  unsigned int yuv_disp_path_sel_ch0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int yuv_disp_path_sel_ch1;
+  unsigned int scl_pre_path_sel;
+  unsigned int scl_vid_path_sel;
+  unsigned int scl_cap_path_sel;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int store_out_path_sel;
+  unsigned int jpg_frame_done_en;
+  unsigned int jpg_frame_done_clr;
+  unsigned int jpg_line_done_en;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int isp_soft_rst;
+  unsigned int isp_cfg_sof_rst;
+  unsigned int fetch_color_format;
+  unsigned int store_color_format;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_contrast_info {
+  unsigned int bypass;
+  unsigned int factor;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct csa_factor {
+  unsigned int bypass;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_csa_info {
+  unsigned int bypass;
+  unsigned int factor_u;
+  unsigned int factor_v;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct csa_factor factor;
+};
+struct isp_dev_dispatch_info {
+  unsigned int bayer_ch0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct isp_img_size ch0_size;
+  struct isp_img_size ch1_size;
+  unsigned short width_dly_num_ch0;
+  unsigned short height_dly_num_ch0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bayer_ch1;
+  unsigned short nready_cfg_ch0;
+  unsigned short nready_width_ch0;
+  unsigned short pipe_dly_num;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dispatch_dly_num_info {
+  unsigned short width_dly_num_ch0;
+  unsigned short height_dly_num_ch0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dispatch_hw_ctrl_info {
+  unsigned short nready_cfg_ch0;
+  unsigned short nready_width_ch0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct edge_pn_config {
+  unsigned int p;
+  unsigned int n;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_edge_info {
+  unsigned int bypass;
+  unsigned int flat_smooth_mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int edge_smooth_mode;
+  struct edge_pn_config ee_str_d;
+  unsigned int mode;
+  struct edge_pn_config ee_incr_d;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct edge_pn_config ee_edge_thr_d;
+  struct edge_pn_config ee_corner_sm;
+  struct edge_pn_config ee_corner_gain;
+  struct edge_pn_config ee_corner_th;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_corner_cor;
+  unsigned int ee_cv_t[4];
+  struct edge_pn_config ee_cv_clip;
+  unsigned int ee_cv_r[3];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ipd_bypass;
+  unsigned int ipd_mask_mode;
+  struct edge_pn_config ipd_less_thr;
+  unsigned int ipd_smooth_en;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct edge_pn_config ipd_smooth_mode;
+  struct edge_pn_config ipd_flat_thr;
+  struct edge_pn_config ipd_eq_thr;
+  struct edge_pn_config ipd_more_thr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct edge_pn_config ipd_smooth_edge_thr;
+  struct edge_pn_config ipd_smooth_edge_diff;
+  unsigned int ee_ratio_hv_3;
+  unsigned int ee_ratio_hv_5;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_ratio_diag_3;
+  unsigned int ee_weight_hv2diag;
+  unsigned int ee_gradient_computation_type;
+  unsigned int ee_weight_diag2hv;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_gain_hv_t[2][4];
+  unsigned int ee_gain_hv_r[2][3];
+  unsigned int ee_ratio_diag_5;
+  unsigned int ee_gain_diag_t[2][4];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_gain_diag_r[2][3];
+  unsigned int ee_lum_t[4];
+  unsigned int ee_lum_r[3];
+  unsigned int ee_pos_t[4];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_pos_r[3];
+  unsigned int ee_pos_c[3];
+  unsigned int ee_neg_t[4];
+  unsigned int ee_neg_r[3];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_neg_c[3];
+  unsigned int ee_freq_t[4];
+  unsigned int ee_freq_r[3];
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_addr_fs {
+  unsigned int chn0;
+  unsigned int chn1;
+  unsigned int chn2;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_pitch_fs {
+  unsigned int chn0;
+  unsigned int chn1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int chn2;
+};
+struct isp_dev_block_addr {
+  struct isp_addr img_vir;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct isp_addr img_offset;
+  unsigned int img_fd;
+};
+struct isp_dev_fetch_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bypass;
+  unsigned int subtract;
+  unsigned int color_format;
+  unsigned int start_isp;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct isp_img_size size;
+  struct isp_addr_fs addr;
+  struct isp_pitch_fs pitch;
+  unsigned int mipi_word_num;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int mipi_byte_rel_pos;
+  unsigned int no_line_dly_ctrl;
+  unsigned int req_cnt_num;
+  unsigned int line_dly_num;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct isp_dev_block_addr fetch_addr;
+};
+struct isp_dev_fetch2_info {
+  unsigned int bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int subtract;
+  unsigned int color_format;
+  unsigned int ft0_axi_reorder_en;
+  unsigned int ft1_axi_reorder_en;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ft2_axi_reorder_en;
+  unsigned int chk_sum_clr_en;
+  unsigned int first_line_mode;
+  unsigned int last_line_mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int start_isp;
+  struct isp_img_size size;
+  struct isp_addr_fs addr;
+  struct isp_pitch_fs pitch;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int hblank_num;
+  struct isp_addr_fs retain_num;
+  struct isp_addr_fs max_len_sel;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct ee_param {
+  unsigned int ee_mode;
+  unsigned int ee_str_d_p;
+  unsigned int ee_str_d_n;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_edge_thr_d_p;
+  unsigned int ee_edge_thr_d_n;
+  unsigned int ee_incr_d_p;
+  unsigned int ee_incr_d_n;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_corner_cor;
+  unsigned int ee_corner_th_p;
+  unsigned int ee_corner_th_n;
+  unsigned int ee_corner_gain_p;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_corner_gain_n;
+  unsigned int ee_corner_sm_p;
+  unsigned int ee_corner_sm_n;
+  unsigned int ee_edge_smooth_mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_flat_smooth_mode;
+  unsigned int ipd_bypass;
+  unsigned int ipd_mask_mode;
+  unsigned int ipd_flat_thr_p;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ipd_flat_thr_n;
+  unsigned int ipd_eq_thr_p;
+  unsigned int ipd_eq_thr_n;
+  unsigned int ipd_more_thr_p;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ipd_more_thr_n;
+  unsigned int ipd_less_thr_p;
+  unsigned int ipd_less_thr_n;
+  unsigned int ipd_smooth_en;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ipd_smooth_mode_p;
+  unsigned int ipd_smooth_mode_n;
+  unsigned int ipd_smooth_edge_thr_p;
+  unsigned int ipd_smooth_edge_thr_n;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ipd_smooth_edge_diff_p;
+  unsigned int ipd_smooth_edge_diff_n;
+  unsigned int ee_cv_t1;
+  unsigned int ee_cv_t2;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_cv_t3;
+  unsigned int ee_cv_t4;
+  unsigned int ee_cv_r1;
+  unsigned int ee_cv_r2;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_cv_r3;
+  unsigned int ee_cv_clip_p;
+  unsigned int ee_cv_clip_n;
+  unsigned int ee_ratio_hv_3;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_ratio_hv_5;
+  unsigned int ee_ratio_diag_3;
+  unsigned int ee_ratio_diag_5;
+  unsigned int ee_gain_hv_1_t1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_gain_hv_1_t2;
+  unsigned int ee_gain_hv_1_t3;
+  unsigned int ee_gain_hv_1_t4;
+  unsigned int ee_gain_hv_1_r1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_gain_hv_1_r2;
+  unsigned int ee_gain_hv_1_r3;
+  unsigned int ee_gain_hv_2_t1;
+  unsigned int ee_gain_hv_2_t2;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_gain_hv_2_t3;
+  unsigned int ee_gain_hv_2_t4;
+  unsigned int ee_gain_hv_2_r1;
+  unsigned int ee_gain_hv_2_r2;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_gain_hv_2_r3;
+  unsigned int ee_gain_diag_1_t1;
+  unsigned int ee_gain_diag_1_t2;
+  unsigned int ee_gain_diag_1_t3;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_gain_diag_1_t4;
+  unsigned int ee_gain_diag_1_r1;
+  unsigned int ee_gain_diag_1_r2;
+  unsigned int ee_gain_diag_1_r3;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_gain_diag_2_t1;
+  unsigned int ee_gain_diag_2_t2;
+  unsigned int ee_gain_diag_2_t3;
+  unsigned int ee_gain_diag_2_t4;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_gain_diag_2_r1;
+  unsigned int ee_gain_diag_2_r2;
+  unsigned int ee_gain_diag_2_r3;
+  unsigned int ee_weightt_hv2diag;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_weightt_diag2hv;
+  unsigned int ee_gradient_computation_type;
+  unsigned int ee_lum_t1;
+  unsigned int ee_lum_t2;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_lum_t3;
+  unsigned int ee_lum_t4;
+  unsigned int ee_lum_r1;
+  unsigned int ee_lum_r2;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_lum_r3;
+  unsigned int ee_pos_t1;
+  unsigned int ee_pos_t2;
+  unsigned int ee_pos_t3;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_pos_t4;
+  unsigned int ee_pos_r1;
+  unsigned int ee_pos_r2;
+  unsigned int ee_pos_r3;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_pos_c1;
+  unsigned int ee_pos_c2;
+  unsigned int ee_pos_c3;
+  unsigned int ee_neg_t1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_neg_t2;
+  unsigned int ee_neg_t3;
+  unsigned int ee_neg_t4;
+  unsigned int ee_neg_r1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_neg_r2;
+  unsigned int ee_neg_r3;
+  unsigned int ee_neg_c1;
+  unsigned int ee_neg_c2;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_neg_c3;
+  unsigned int ee_freq_t1;
+  unsigned int ee_freq_t2;
+  unsigned int ee_freq_t3;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ee_freq_t4;
+  unsigned int ee_freq_r1;
+  unsigned int ee_freq_r2;
+  unsigned int ee_freq_r3;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct coordinate_xy {
+  unsigned short node_x;
+  unsigned short node_y;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct coordinate_xyz {
+  unsigned short node_x;
+  unsigned short node_y;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short node_z;
+};
+struct isp_dev_gamma_info {
+  unsigned int bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct coordinate_xy nodes[ISP_PINGPANG_FRGB_GAMC_NUM];
+};
+struct gamma_buf_sel {
+  unsigned int r_buf_sel;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int g_buf_sel;
+  unsigned int b_buf_sel;
+};
+struct grgb_param_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int grgb_diff_th;
+  unsigned int grgb_hv_edge_thr;
+  unsigned int grgb_slash_edge_thr;
+  unsigned int grgb_hv_flat_thr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int grgb_slash_flat_thr;
+  unsigned int grgb_gr_ratio;
+  unsigned int grgb_gb_ratio;
+  unsigned int grgb_lum_curve_flat_t1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int grgb_lum_curve_flat_t2;
+  unsigned int grgb_lum_curve_flat_t3;
+  unsigned int grgb_lum_curve_flat_t4;
+  unsigned int grgb_lum_curve_flat_r1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int grgb_lum_curve_flat_r2;
+  unsigned int grgb_lum_curve_flat_r3;
+  unsigned int grgb_lum_curve_edge_t1;
+  unsigned int grgb_lum_curve_edge_t2;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int grgb_lum_curve_edge_t3;
+  unsigned int grgb_lum_curve_edge_t4;
+  unsigned int grgb_lum_curve_edge_r1;
+  unsigned int grgb_lum_curve_edge_r2;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int grgb_lum_curve_edge_r3;
+  unsigned int grgb_lum_curve_texture_t1;
+  unsigned int grgb_lum_curve_texture_t2;
+  unsigned int grgb_lum_curve_texture_t3;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int grgb_lum_curve_texture_t4;
+  unsigned int grgb_lum_curve_texture_r1;
+  unsigned int grgb_lum_curve_texture_r2;
+  unsigned int grgb_lum_curve_texture_r3;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int grgb_frez_curve_flat_t1;
+  unsigned int grgb_frez_curve_flat_t2;
+  unsigned int grgb_frez_curve_flat_t3;
+  unsigned int grgb_frez_curve_flat_t4;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int grgb_frez_curve_flat_r1;
+  unsigned int grgb_frez_curve_flat_r2;
+  unsigned int grgb_frez_curve_flat_r3;
+  unsigned int grgb_frez_curve_edge_t1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int grgb_frez_curve_edge_t2;
+  unsigned int grgb_frez_curve_edge_t3;
+  unsigned int grgb_frez_curve_edge_t4;
+  unsigned int grgb_frez_curve_edge_r1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int grgb_frez_curve_edge_r2;
+  unsigned int grgb_frez_curve_edge_r3;
+  unsigned int grgb_frez_curve_texture_t1;
+  unsigned int grgb_frez_curve_texture_t2;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int grgb_frez_curve_texture_t3;
+  unsigned int grgb_frez_curve_texture_t4;
+  unsigned int grgb_frez_curve_texture_r1;
+  unsigned int grgb_frez_curve_texture_r2;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int grgb_frez_curve_texture_r3;
+};
+struct grgb_param {
+  unsigned int curve_t[3][4];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int curve_r[3][3];
+};
+struct isp_dev_grgb_info {
+  unsigned int bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int diff_thd;
+  unsigned int hv_edge_thr;
+  unsigned int check_sum_clr;
+  unsigned int slash_edge_thr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int slash_flat_thr;
+  unsigned int gr_ratio;
+  unsigned int hv_flat_thr;
+  unsigned int gb_ratio;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct grgb_param lum;
+  struct grgb_param frez;
+};
+struct isp_dev_hist_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bypass;
+  unsigned int mode;
+  unsigned int skip_num;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_hist2_info {
+  unsigned int bypass;
+  unsigned int mode;
+  unsigned int skip_num;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct isp_coord hist_roi;
+  uint32_t skip_num_clr;
+};
+struct hist_roi {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int hist_roi_x_s;
+  unsigned int hist_roi_y_s;
+  unsigned int hist_roi_x_e;
+  unsigned int hist_roi_y_e;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_hsv_region_info {
+  unsigned short s_curve[5][4];
+  unsigned short v_curve[5][4];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int hrange_left[5];
+  unsigned int hrange_right[5];
+};
+struct hsv_curve {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int h[5][2];
+  unsigned int s[5][4];
+  unsigned int v[5][4];
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_hsv_info {
+  unsigned int bypass;
+  unsigned int buf_sel;
+  struct isp_hsv_region_info region_info[2];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int data_ptr[2];
+  unsigned int size;
+};
+struct isp_dev_hue_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bypass;
+  unsigned int theta;
+};
+struct isp_dev_iircnr_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bypass;
+  unsigned int mode;
+  unsigned int uv_th;
+  unsigned int y_max_th;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int y_min_th;
+  unsigned int uv_dist;
+  unsigned int uv_pg_th;
+  unsigned int sat_ratio;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int uv_low_thr2;
+  unsigned int uv_low_thr1;
+  unsigned int ymd_u;
+  unsigned int ymd_v;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int uv_s_th;
+  unsigned int slope_y_0;
+  unsigned int y_th;
+  unsigned int alpha_low_u;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int alpha_low_v;
+  unsigned int middle_factor_y_0;
+  unsigned int uv_high_thr2_0;
+  unsigned int ymd_min_u;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ymd_min_v;
+  unsigned int uv_low_thr[7][2];
+  unsigned int y_edge_thr_max[8];
+  unsigned int y_edge_thr_min[8];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int uv_high_thr2[7];
+  unsigned int slope_y[7];
+  unsigned int middle_factor_y[7];
+  unsigned int middle_factor_uv[8];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int slope_uv[8];
+  unsigned int pre_uv_th;
+  unsigned int css_lum_thr;
+  unsigned int uv_diff_thr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct iircnr_thr {
+  unsigned int y_th;
+  unsigned int uv_th;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int uv_pg_th;
+  unsigned int uv_dist;
+  unsigned int uv_s_th;
+  unsigned int alpha_low_u;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int alpha_low_v;
+  unsigned int y_max_th;
+  unsigned int y_min_th;
+  unsigned int pre_uv_th;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int sat_ratio;
+  unsigned int y_edge_thr_max[8];
+  unsigned int y_edge_thr_min[8];
+  unsigned int uv_low_thr1_tbl[8];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int uv_low_thr2_tbl[8];
+  unsigned int uv_high_thr2_tbl[8];
+  unsigned int slope_uv[8];
+  unsigned int middle_factor_uv[8];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int middle_factor_y[8];
+  unsigned int slope_y[8];
+  unsigned int uv_diff_thr;
+  unsigned int css_lum_thr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct iircnr_ymd {
+  unsigned int ymd_u;
+  unsigned int ymd_v;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ymd_min_u;
+  unsigned int ymd_min_v;
+};
+struct yrandom_takebit {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int takeBit[8];
+};
+struct nlc_node {
+  unsigned short r_node[29];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short reserved0;
+  unsigned short g_node[29];
+  unsigned short reserved1;
+  unsigned short b_node[29];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short reserved2;
+  unsigned short l_node[27];
+  unsigned short reserved3;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_nlc_info {
+  unsigned int bypass;
+  struct nlc_node node;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_vst_info {
+  unsigned int bypass;
+  unsigned int buf_sel;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#pragma pack(push)
+#pragma pack(4)
+struct lum_flat_param {
+  unsigned short thresh;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short match_count;
+  unsigned short inc_strength;
+  unsigned short reserved;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#pragma pack()
+#pragma pack(push)
+#pragma pack(4)
+struct isp_dev_nlm_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bypass;
+  unsigned int imp_opt_bypass;
+  unsigned int flat_opt_bypass;
+  unsigned int direction_mode_bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int first_lum_byapss;
+  unsigned int simple_bpc_bypass;
+  unsigned int dist_mode;
+  unsigned int flat_opt_mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int den_strength;
+  unsigned char w_shift[3];
+  unsigned char reserved;
+  unsigned int direction_cnt_th;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int simple_bpc_lum_th;
+  unsigned int simple_bpc_th;
+  unsigned int lum_th0;
+  unsigned int lum_th1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int diff_th;
+  unsigned int tdist_min_th;
+  unsigned short lut_w[72];
+  struct lum_flat_param lum_flat[3][3];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short lum_flat_addback0[3][4];
+  unsigned short lum_flat_addback1[3][4];
+  unsigned short lum_flat_addback_min[3][4];
+  unsigned short lum_flat_addback_max[3][4];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int lum_flat_dec_strenth[3];
+  unsigned int vst_addr[2];
+  unsigned int vst_len;
+  unsigned int ivst_addr[2];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ivst_len;
+  unsigned int nlm_len;
+};
+#pragma pack()
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_ivst_info {
+  unsigned int bypass;
+  unsigned int buf_sel;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_noise_filter_info {
+  unsigned int yrandom_bypass;
+  unsigned int shape_mode;
+  unsigned int filter_thr_mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int yrandom_mode;
+  unsigned int yrandom_seed[4];
+  unsigned int takebit[8];
+  unsigned int r_offset;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int r_shift;
+  unsigned int filter_thr;
+  unsigned int cv_t[4];
+  unsigned int cv_r[3];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct edge_pn_config noise_clip;
+};
+struct noise_filter_param {
+  unsigned int noisefilter_shape_mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int noisefilter_takeBit[8];
+  unsigned int noisefilter_r_shift;
+  unsigned int noisefilter_r_offset;
+  unsigned int noisefilter_filter_thr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int noisefilter_filter_thr_m;
+  unsigned int noisefilter_av_t1;
+  unsigned int noisefilter_av_t2;
+  unsigned int noisefilter_av_t3;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int noisefilter_av_t4;
+  unsigned int noisefilter_av_r1;
+  unsigned int noisefilter_av_r2;
+  unsigned int noisefilter_av_r3;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int noisefilter_clip_p;
+  unsigned int noisefilter_clip_n;
+};
+struct isp_dev_pre_glb_gain_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bypass;
+  unsigned int gain;
+};
+struct isp_dev_ynr_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bypass;
+  unsigned int lowlux_bypass;
+  unsigned int nr_enable;
+  unsigned int l_blf_en[3];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int txt_th;
+  unsigned int edge_th;
+  unsigned int flat_th[7];
+  unsigned int lut_th[7];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int addback[9];
+  unsigned int sub_th[9];
+  unsigned int l_euroweight[3][3];
+  unsigned int l_wf_index[3];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int l0_lut_th0;
+  unsigned int l0_lut_th1;
+  unsigned int l1_txt_th0;
+  unsigned int l1_txt_th1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int wlt_th[24];
+  unsigned int freq_ratio[24];
+  struct img_offset start_pos;
+  struct img_offset center;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int radius;
+  unsigned int dist_interval;
+  unsigned char sal_nr_str[8];
+  unsigned char sal_offset[8];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int edgeStep[8];
+  unsigned int wlt_T[3];
+  unsigned int ad_para[3];
+  unsigned int ratio[3];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int maxRadius;
+};
+struct ynr_param {
+  unsigned int yDenoise_lowlux_bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int yDenoise_flat[7];
+  unsigned int yDenoise_lut_thresh[7];
+  unsigned int yDenoise_subThresh[9];
+  unsigned int yDenoise_addback[9];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int yDenoise_SEdgethresh;
+  unsigned int yDenoise_txtThresh;
+  unsigned int yDenoise_l1_txt_thresh1;
+  unsigned int yDenoise_l1_txt_thresh0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int yDenoise_l0_lut_thresh1;
+  unsigned int yDenoise_l0_lut_thresh0;
+  unsigned int yDenoise_l1_euroDist[3];
+  unsigned int yDenoise_l3_WFIndex;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int yDenoise_l2_WFIndex;
+  unsigned int yDenoise_l1_WFIndex;
+  unsigned int yDenoise_l2_euroDist[3];
+  unsigned int yDenoise_l3_euroDist[3];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int yDenoise_wv_nr_enable;
+  unsigned int yDenoise_l1_blf_enable;
+  unsigned int yDenoise_l2_blf_enable;
+  unsigned int yDenoise_l3_blf_enable;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int wltT[24];
+  unsigned int freqRatio[24];
+  unsigned int dist_interval;
+  unsigned int yDenoise_Radius;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int yDenoise_imgCenterX;
+  unsigned int yDenoise_imgCenterY;
+  unsigned int yDenoise_Sal_nr_str[8];
+  unsigned int yDenoise_Sal_offset[8];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_rrgb {
+  unsigned int r;
+  unsigned int b;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int gr;
+  unsigned int gb;
+};
+struct isp_dev_pdaf_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bypass;
+  unsigned int corrector_bypass;
+  unsigned int phase_map_corr_en;
+  struct isp_img_size block_size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int grid_mode;
+  struct isp_coord win;
+  struct isp_coord block;
+  struct isp_rrgb gain_upperbound;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int phase_txt_smooth;
+  unsigned int phase_gfilter;
+  unsigned int phase_flat_smoother;
+  unsigned int hot_pixel_th[3];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int dead_pixel_th[3];
+  unsigned int flat_th;
+  unsigned int edge_ratio_hv;
+  unsigned int edge_ratio_rd;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int edge_ratio_hv_rd;
+  unsigned int phase_left_addr;
+  unsigned int phase_right_addr;
+  unsigned int phase_pitch;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int pattern_pixel_is_right[PDAF_PPI_NUM];
+  unsigned int pattern_pixel_row[PDAF_PPI_NUM];
+  unsigned int pattern_pixel_col[PDAF_PPI_NUM];
+  unsigned int gain_ori_left[2];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int gain_ori_right[2];
+  unsigned int extractor_bypass;
+  unsigned int mode_sel;
+  unsigned int skip_num;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int phase_data_dword_num;
+  struct isp_rrgb pdaf_blc;
+  unsigned int data_ptr_left[2];
+  unsigned int data_ptr_right[2];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct pdaf_addr_info {
+  unsigned int addr_l;
+  unsigned int addr_r;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct pdaf_extraction_param {
+  unsigned int ppi_block_start_col;
+  unsigned int ppi_block_start_row;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ppi_block_end_col;
+  unsigned int ppi_block_end_row;
+  unsigned int ppi_block_width;
+  unsigned int ppi_block_height;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int pattern_row[PDAF_PPI_NUM];
+  unsigned int pattern_col[PDAF_PPI_NUM];
+  unsigned int pattern_pos[PDAF_PPI_NUM];
+  unsigned int ppi_extractor_bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ppi_skip_num;
+  unsigned int skip_mode;
+  unsigned int phase_data_write_num;
+  unsigned int ppi_af_win_sy0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ppi_af_win_sx0;
+  unsigned int ppi_af_win_ey0;
+  unsigned int ppi_af_win_ex0;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct pdaf_correction_param {
+  unsigned int ppi_grid;
+  unsigned int l_gain[2];
+  unsigned int r_gain[2];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ppi_corrector_bypass;
+  unsigned int ppi_phase_map_corr_en;
+  unsigned int ppi_upperbound_gr;
+  unsigned int ppi_upperbound_gb;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ppi_upperbound_r;
+  unsigned int ppi_upperbound_b;
+  unsigned int ppi_blacklevel_gr;
+  unsigned int ppi_blacklevel_r;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ppi_blacklevel_b;
+  unsigned int ppi_blacklevel_gb;
+  unsigned int ppi_phase_gfilter;
+  unsigned int ppi_phase_flat_smoother;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ppi_phase_txt_smoother;
+  unsigned int ppi_hot_1pixel_th;
+  unsigned int ppi_hot_2pixel_th;
+  unsigned int ppi_hot_3pixel_th;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ppi_dead_1pixel_th;
+  unsigned int ppi_dead_2pixel_th;
+  unsigned int ppi_dead_3pixel_th;
+  unsigned int ppi_flat_th;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ppi_edgeRatio_hv_rd;
+  unsigned int ppi_edgeRatio_hv;
+  unsigned int ppi_edgeRatio_rd;
+  unsigned short data_ptr_left[PDAF_CORRECT_GAIN_NUM];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short data_ptr_right[PDAF_CORRECT_GAIN_NUM];
+};
+struct pdaf_ppi_info {
+  struct isp_img_size block_size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct isp_coord block;
+  unsigned int pattern_pixel_is_right[PDAF_PPI_NUM];
+  unsigned int pattern_pixel_row[PDAF_PPI_NUM];
+  unsigned int pattern_pixel_col[PDAF_PPI_NUM];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct pdaf_roi_info {
+  struct isp_coord win;
+  unsigned int phase_data_write_num;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_post_blc_info {
+  unsigned int bypass;
+  unsigned int r_para;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int b_para;
+  unsigned int gr_para;
+  unsigned int gb_para;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct cdn_thruv {
+  unsigned short thru0;
+  unsigned short thru1;
+  unsigned short thrv0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short thrv1;
+};
+struct isp_dev_post_cdn_info {
+  unsigned int bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int downsample_bypass;
+  unsigned int mode;
+  unsigned int writeback_en;
+  unsigned int uvjoint;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int median_mode;
+  unsigned int adapt_med_thr;
+  unsigned int uvthr0;
+  unsigned int uvthr1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct cdn_thruv thr_uv;
+  unsigned char r_segu[2][7];
+  unsigned char r_segv[2][7];
+  unsigned char r_distw[15][5];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned char reserved;
+};
+struct post_cdn_thr {
+  unsigned int uvthr0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int uvthr1;
+  unsigned int thru0;
+  unsigned int thru1;
+  unsigned int thrv0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int thrv1;
+};
+struct post_cdn_rseg {
+  unsigned int r_segu[2][7];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int r_segv[2][7];
+};
+struct post_cdn_distw {
+  unsigned int r_distw[15][5];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_posterize_info {
+  unsigned int bypass;
+  unsigned char posterize_level_bottom[POSTERIZE_NUM];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned char posterize_level_top[POSTERIZE_NUM];
+  unsigned char posterize_level_out[POSTERIZE_NUM];
+};
+struct pstrz_level {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  int posterize_level_bottom[8];
+  int posterize_level_top[8];
+  int posterize_level_out[8];
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct rlsc_init_node {
+  unsigned int init_r0c0;
+  unsigned int init_r0c1;
+  unsigned int init_r1c0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int init_r1c1;
+};
+struct rlsc_slice_param {
+  struct img_offset start_pos;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  uint32_t r[4];
+  uint32_t r2[4];
+  uint32_t dr2[4];
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_radial_lsc_info {
+  unsigned int bypass;
+  unsigned int radius_step;
+  unsigned int buf_sel;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct img_offset center_r0c0_pos;
+  struct img_offset center_r0c1_pos;
+  struct img_offset center_r1c0_pos;
+  struct img_offset center_r1c1_pos;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct img_offset start_pos;
+  struct rlsc_init_node r_cfg;
+  struct rlsc_init_node r2_cfg;
+  struct rlsc_init_node dr2_cfg;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int data_ptr[2];
+};
+struct isp_dev_rgb_gain_info {
+  unsigned int bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int global_gain;
+  unsigned int r_gain;
+  unsigned int g_gain;
+  unsigned int b_gain;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_rgb_dither_info {
+  unsigned int random_bypass;
+  unsigned int random_mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int seed;
+  unsigned int range;
+  unsigned int r_offset;
+  unsigned int r_shift;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int takebit[8];
+};
+struct rgbg_gain {
+  unsigned int r_gain;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int g_gain;
+  unsigned int b_gain;
+};
+struct store_border {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short up_border;
+  unsigned short down_border;
+  unsigned short left_border;
+  unsigned short right_border;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_feeder_info {
+  unsigned int data_type;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_store_info {
+  unsigned int bypass;
+  unsigned int endian;
+  unsigned int subtract;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int color_format;
+  struct isp_img_size size;
+  struct store_border border;
+  struct isp_addr_fs addr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct isp_pitch_fs pitch;
+  unsigned short shadow_clr_sel;
+  unsigned short shadow_clr;
+  unsigned short store_res;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short rd_ctrl;
+};
+struct isp_dev_store0_info {
+  unsigned int bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int st_max_len_sel;
+  unsigned int yuv_mode;
+  unsigned int shadow_clr_sel;
+  unsigned int st_y_axi_reorder_en;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int st_uv_axi_reorder_en;
+  struct isp_img_size size;
+  unsigned int st_luma_addr[NR3_BUF_NUM];
+  unsigned int st_chroma_addr[NR3_BUF_NUM];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int st_pitch;
+  unsigned int shadow_clr;
+  unsigned int buf_sel;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_store_preview_info {
+  unsigned int bypass;
+  unsigned int endian;
+  unsigned int speed_2x;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int mirror_en;
+  unsigned int color_format;
+  unsigned int max_len_sel;
+  struct isp_img_size size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct store_border border;
+  struct isp_addr_fs addr;
+  struct isp_pitch_fs pitch;
+  unsigned short shadow_clr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short store_res;
+  unsigned short rd_ctrl;
+  unsigned short shadow_clr_sel;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_store_video_info {
+  unsigned int bypass;
+  unsigned int endian;
+  unsigned int speed_2x;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int mirror_en;
+  unsigned int color_format;
+  unsigned int max_len_sel;
+  struct isp_img_size size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct store_border border;
+  struct isp_addr_fs addr;
+  struct isp_pitch_fs pitch;
+  unsigned short shadow_clr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short store_res;
+  unsigned short rd_ctrl;
+  unsigned short shadow_clr_sel;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_store_capture_info {
+  unsigned int bypass;
+  unsigned int endian;
+  unsigned int speed_2x;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int mirror_en;
+  unsigned int color_format;
+  unsigned int max_len_sel;
+  struct isp_img_size size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct store_border border;
+  struct isp_addr_fs addr;
+  struct isp_pitch_fs pitch;
+  unsigned short shadow_clr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short store_res;
+  unsigned short rd_ctrl;
+  unsigned short shadow_clr_sel;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_scaler0_pre_info {
+  unsigned int isp_sacler_all_bypass;
+  unsigned int isp_uv_sync_y;
+  struct isp_img_size size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_scaler_pre_info {
+  unsigned int bypass;
+  struct isp_img_size size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_scaler_vid_info {
+  unsigned int bypass;
+  struct isp_img_size size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_scaler_cap_info {
+  unsigned int bypass;
+  struct isp_img_size size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_store_cce_info {
+  unsigned int bypass;
+  unsigned int max_len_sel;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int speed_2x;
+  unsigned int mirror_en;
+  unsigned int color_format;
+  unsigned int endian;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct isp_img_size size;
+  struct store_border border;
+  struct isp_addr_fs addr[NR3_BUF_NUM];
+  struct isp_pitch_fs pitch;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short shadow_clr;
+  unsigned short store_res;
+  unsigned short rd_ctrl;
+  unsigned short shadow_clr_sel;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int total_word;
+  unsigned int up_border;
+  unsigned int down_border;
+  unsigned int buf_sel;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct slice_overlap {
+  unsigned int overlap_up;
+  unsigned int overlap_down;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int overlap_left;
+  unsigned int overlap_right;
+};
+struct uvd_th {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned char th_h[2];
+  unsigned char th_l[2];
+};
+struct isp_dev_uvd_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bypass;
+  unsigned int lum_th_h_len;
+  unsigned int lum_th_h;
+  unsigned int lum_th_l_len;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int lum_th_l;
+  unsigned int chroma_min_h;
+  unsigned int chroma_min_l;
+  unsigned int chroma_max_h;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int chroma_max_l;
+  struct uvd_th u_th;
+  struct uvd_th v_th;
+  unsigned int ratio;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ratio_uv_min;
+  unsigned int ratio_y_min[2];
+  unsigned int ratio0;
+  unsigned int ratio1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int y_th_l_len;
+  unsigned int y_th_h_len;
+  unsigned int uv_abs_th_len;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_ydelay_info {
+  unsigned int bypass;
+  unsigned int step;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_ygamma_info {
+  unsigned int bypass;
+  unsigned int buf_sel;
+  struct coordinate_xy nodes[ISP_PINGPANG_YUV_YGAMMA_NUM];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_yuv_precdn_info {
+  unsigned int bypass;
+  unsigned int mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int median_writeback_en;
+  unsigned int median_mode;
+  unsigned int den_stren;
+  unsigned int uv_joint;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct cdn_thruv median_thr_uv;
+  unsigned int median_thr;
+  unsigned int uv_thr;
+  unsigned int y_thr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned char r_segu[2][7];
+  unsigned char r_segv[2][7];
+  unsigned char r_segy[2][7];
+  unsigned char r_distw[25];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned char reserved;
+};
+struct pre_cdn_thr {
+  unsigned int median_thr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int y_thr;
+  unsigned int uv_thr;
+  unsigned int median_thr_u[2];
+  unsigned int median_thr_v[2];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct pre_cdn_seg {
+  unsigned int r_segu[2][7];
+  unsigned int r_segv[2][7];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int r_segy[2][7];
+};
+struct pre_cdn_dist {
+  unsigned int r_distw[25];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_buf_node {
+  unsigned int type;
+  unsigned long k_addr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned long u_addr;
+};
+struct isp_scaling_ratio {
+  unsigned char vertical;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned char horizontal;
+};
+struct isp_b4awb_phys {
+  unsigned int phys0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int phys1;
+};
+enum isp_buf_node_type {
+  ISP_NODE_TYPE_BINNING4AWB,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_NODE_TYPE_RAWAEM,
+  ISP_NODE_TYPE_AE_RESERVED,
+};
+struct isp_statis_frame_output {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int format;
+  unsigned int buf_size;
+  unsigned long phy_addr;
+  unsigned long vir_addr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_statis_buf_input {
+  uint32_t buf_size;
+  uint32_t buf_num;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned long phy_addr;
+  unsigned long vir_addr;
+  unsigned long addr_offset;
+  unsigned int kaddr[2];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned long mfd;
+  unsigned long dev_fd;
+  uint32_t buf_property;
+  uint32_t buf_flag;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  uint32_t is_statis_buf_reserved;
+  uint32_t reserved[4];
+};
+enum statis_buf_flag {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  STATIS_BUF_FLAG_INIT,
+  STATIS_BUF_FLAG_RUNNING,
+  STATIS_BUF_FLAG_MAX
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum isp_3a_block_id {
+  ISP_AEM_BLOCK,
+  ISP_AFL_BLOCK,
+  ISP_AFM_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  ISP_BINNING_BLOCK,
+  ISP_PDAF_BLOCK,
+  ISP_HIST_BLOCK,
+  ISP_HIST2_BLOCK,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  DCAM_AEM_BLOCK,
+  DCAM_PDAF_BLOCK,
+};
+enum isp_irq_done_id {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  IRQ_SHADOW_DONE,
+  IRQ_DCAM_SOF,
+  IRQ_DCAM_PULSE,
+  IRQ_DCAM_VCM_MV,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  IRQ_ALL_DONE,
+  IRQ_RAW_CAP_DONE,
+  IRQ_AEM_STATIS,
+  IRQ_AFL_STATIS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  IRQ_AFM_STATIS,
+  IRQ_BINNING_STATIS,
+  IRQ_PDAF_STATIS,
+  IRQ_HIST_STATIS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  IRQ_HIST2_STATIS,
+  IRQ_MAX_DONE,
+};
+struct sprd_isp_time {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int sec;
+  unsigned int usec;
+};
+struct isp_irq_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int irq_type;
+  unsigned int irq_flag;
+  unsigned int format;
+  unsigned int channel_id;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int base_id;
+  unsigned int img_id;
+  unsigned int irq_id;
+  unsigned int sensor_id;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned long yaddr;
+  unsigned long uaddr;
+  unsigned long vaddr;
+  unsigned long yaddr_vir;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned long uaddr_vir;
+  unsigned long vaddr_vir;
+  unsigned int img_y_fd;
+  unsigned int img_u_fd;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int img_v_fd;
+  unsigned long length;
+  struct isp_img_size buf_size;
+  struct sprd_isp_time time_stamp;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct isp_statis_frame_output isp_statis_output;
+  unsigned int frm_index;
+};
+struct isp_dev_lsc_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bypass;
+  unsigned int grid_pitch;
+  unsigned int grid_mode;
+  unsigned int endian;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int buf_addr[2];
+  unsigned int buf_len;
+};
+struct awbm_rect_pos {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int start_x[5];
+  unsigned int start_y[5];
+  unsigned int end_x[5];
+  unsigned int end_y[5];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct awbm_circle_pos {
+  unsigned int x[5];
+  unsigned int y[5];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int r[5];
+};
+struct awbm_pixel_num {
+  unsigned int pixel_num[5];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct awbm_thr {
+  unsigned int r_high;
+  unsigned int r_low;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int g_high;
+  unsigned int g_low;
+  unsigned int b_high;
+  unsigned int b_low;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_awb_info_v2 {
+  unsigned int awbm_bypass;
+  unsigned int mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int skip_num;
+  struct img_offset block_offset;
+  struct isp_img_size block_size;
+  unsigned int shift;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int thr_bypass;
+  struct awbm_rect_pos rect_pos;
+  struct awbm_circle_pos circle_pos;
+  struct awbm_rect_pos clctor_pos;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct awbm_pixel_num pix_num;
+  struct awbm_thr thr;
+  struct isp_img_size slice_size;
+  unsigned int skip_num_clear;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int position_sel;
+  unsigned int mem_addr;
+  unsigned int awbc_bypass;
+  unsigned int alpha_bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int alpha_value;
+  unsigned int buf_sel;
+  struct awbc_param gain;
+  struct awbc_rgb thrd;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct awbc_param gain_offset;
+  struct awbc_param gain_buff;
+  struct awbc_param gain_offset_buff;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_pre_wavelet_info {
+  unsigned int bypass;
+  unsigned int radial_bypass;
+  unsigned int gain_thrs0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int gain_thrs1;
+  unsigned int bitshift0;
+  unsigned int bitshift1;
+  unsigned int offset;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int nsr_slope;
+  unsigned int lum_ratio;
+  unsigned int center_pos_x;
+  unsigned int center_pos_y;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int delta_x2;
+  unsigned int delta_y2;
+  unsigned int r2_thr;
+  unsigned int p_param1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int p_param2;
+  unsigned int addback;
+  unsigned int gain_max_thr;
+  unsigned int pos_x;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int pos_y;
+  unsigned int lum_shink_level;
+};
+struct isp_dev_bdn_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bypass;
+  unsigned int radial_bypass;
+  unsigned int addback;
+  unsigned int dis[10][2];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ran[10][8];
+  unsigned int offset_x;
+  unsigned int offset_y;
+  unsigned int squ_x2;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int squ_y2;
+  unsigned int coef;
+  unsigned int coef2;
+  unsigned int start_pos_x;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int start_pos_y;
+  unsigned int offset;
+  unsigned int dis_level;
+  unsigned int ran_level;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_nlm_info_v2 {
+  unsigned int bypass;
+  unsigned int imp_opt_bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int flat_opt_bypass;
+  unsigned int buf_sel;
+  unsigned char strength[5];
+  unsigned char cnt[5];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short thresh[5];
+  unsigned int streng_th;
+  unsigned int texture_dec;
+  unsigned int is_flat;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int addback;
+  unsigned short lut_w[72];
+  unsigned int vst_addr[2];
+  unsigned int vst_len;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ivst_addr[2];
+  unsigned int ivst_len;
+  unsigned int nlm_addr[2];
+  unsigned int nlm_len;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int strength_level;
+};
+struct isp_dev_rgb_gain2_info {
+  unsigned int bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int r_gain;
+  unsigned int g_gain;
+  unsigned int b_gain;
+  unsigned int r_offset;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int g_offset;
+  unsigned int b_offset;
+};
+struct isp_dev_ct_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bypass;
+  unsigned int data_ptr[2];
+  unsigned int size;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_csc_info {
+  unsigned int bypass;
+  unsigned int red_centre_x;
+  unsigned int red_centre_y;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int blue_centre_x;
+  unsigned int blue_centre_y;
+  unsigned int red_x2_init;
+  unsigned int red_y2_init;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int blue_x2_init;
+  unsigned int blue_y2_init;
+  unsigned int red_threshold;
+  unsigned int blue_threshold;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int red_p1_param;
+  unsigned int red_p2_param;
+  unsigned int blue_p1_param;
+  unsigned int blue_p2_param;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int max_gain_thr;
+  struct isp_img_size img_size;
+  struct img_offset start_pos;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_css_info {
+  unsigned int bypass;
+  unsigned int lh_chrom_th;
+  unsigned char chrom_lower_th[7];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned char reserved0;
+  unsigned char chrom_high_th[7];
+  unsigned char reserved1;
+  unsigned int lum_low_shift;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int lum_hig_shift;
+  unsigned char lh_ratio[8];
+  unsigned char ratio[8];
+  unsigned int lum_low_th;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int lum_ll_th;
+  unsigned int lum_hig_th;
+  unsigned int lum_hh_th;
+  unsigned int u_th_0_l;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int u_th_0_h;
+  unsigned int v_th_0_l;
+  unsigned int v_th_0_h;
+  unsigned int u_th_1_l;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int u_th_1_h;
+  unsigned int v_th_1_l;
+  unsigned int v_th_1_h;
+  unsigned int cutoff_th;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_emboss_info {
+  unsigned int y_bypass;
+  unsigned int uv_bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int y_step;
+  unsigned int uv_step;
+};
+struct isp_dev_yrandom_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bypass;
+  unsigned int seed;
+  unsigned int mode;
+  unsigned int init;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int offset;
+  unsigned int shift;
+  unsigned int takeBit[8];
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_dev_prefilter_info {
+  unsigned int bypass;
+  unsigned int writeback;
+  unsigned int thrd;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct afm_subfilter {
+  unsigned int average;
+  unsigned int median;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct afm_shift {
+  unsigned int shift_spsmd;
+  unsigned int shift_sobel5;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int shift_sobel9;
+};
+struct afm_thrd_rgb {
+  unsigned int sobel5_thr_min_red;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int sobel5_thr_max_red;
+  unsigned int sobel5_thr_min_green;
+  unsigned int sobel5_thr_max_green;
+  unsigned int sobel5_thr_min_blue;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int sobel5_thr_max_blue;
+  unsigned int sobel9_thr_min_red;
+  unsigned int sobel9_thr_max_red;
+  unsigned int sobel9_thr_min_green;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int sobel9_thr_max_green;
+  unsigned int sobel9_thr_min_blue;
+  unsigned int sobel9_thr_max_blue;
+  unsigned int spsmd_thr_min_red;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int spsmd_thr_max_red;
+  unsigned int spsmd_thr_min_green;
+  unsigned int spsmd_thr_max_green;
+  unsigned int spsmd_thr_min_blue;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int spsmd_thr_max_blue;
+};
+struct isp_dev_yiq_aem_info {
+  unsigned int ygamma_bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  short gamma_xnode[10];
+  short gamma_ynode[10];
+  unsigned int gamma_node_idx[10];
+  unsigned int aem_bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int aem_mode;
+  unsigned int aem_skip_num;
+  unsigned int offset_x;
+  unsigned int offset_y;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int width;
+  unsigned int height;
+};
+struct isp_dev_yiq_aem_info_v2 {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ygamma_bypass;
+  unsigned int gamma_xnode[10];
+  unsigned int gamma_ynode[10];
+  unsigned int gamma_node_idx[10];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int aem_bypass;
+  unsigned int aem_mode;
+  unsigned int aem_skip_num;
+  unsigned int offset_x;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int offset_y;
+  unsigned int avgshift;
+  unsigned int width;
+  unsigned int height;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_yiq_afm_info {
+  unsigned int bypass;
+  unsigned int mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int source_pos;
+  unsigned int shift;
+  unsigned int skip_num;
+  unsigned int skip_num_clear;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int format;
+  unsigned int iir_bypass;
+  struct isp_coord coord[25];
+  short IIR_c[11];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short reserved;
+};
+struct isp_dev_yiq_afm_info_v2 {
+  unsigned int bypass;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int mode;
+  unsigned int shift;
+  unsigned int skip_num;
+  unsigned int skip_num_clear;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int af_position;
+  unsigned int format;
+  unsigned int iir_bypass;
+  struct isp_coord coord[25];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  int IIR_c[11];
+};
+struct isp_time {
+  unsigned int sec;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int usec;
+};
+struct isp_irq {
+  unsigned int irq_val0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int irq_val1;
+  unsigned int irq_val2;
+  unsigned int irq_val3;
+  unsigned int reserved;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  int32_t ret_val;
+  struct isp_time time;
+};
+struct isp_edge_thrd {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int detail;
+  unsigned int smooth;
+  unsigned int strength;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_capability {
+  unsigned int isp_id;
+  unsigned int index;
+  void __user * property_param;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_awbm_statistics {
+  unsigned int r[ISP_AWBM_ITEM];
+  unsigned int g[ISP_AWBM_ITEM];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int b[ISP_AWBM_ITEM];
+};
+struct isp_awbc_rgb {
+  unsigned int r;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int g;
+  unsigned int b;
+};
+struct isp_raw_awbm_statistics {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int num0;
+  unsigned int num1;
+  unsigned int num2;
+  unsigned int num3;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int num4;
+  unsigned int num_t;
+  unsigned int block_r;
+  unsigned int block_g;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int block_b;
+};
+struct isp_fetch_endian {
+  unsigned int endian;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int bit_recorder;
+};
+struct isp_bayer_mode {
+  unsigned int nlc_bayer;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int awbc_bayer;
+  unsigned int wave_bayer;
+  unsigned int cfa_bayer;
+  unsigned int gain_bayer;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_pitch {
+  unsigned int chn0;
+  unsigned int chn1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int chn2;
+};
+struct isp_grgb_thrd {
+  unsigned int edge;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int diff;
+};
+struct isp_raw_aem_statistics {
+  unsigned int r[ISP_RAW_AEM_ITEM];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int g[ISP_RAW_AEM_ITEM];
+  unsigned int b[ISP_RAW_AEM_ITEM];
+};
+struct isp_bpc_common {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int pattern_type;
+  unsigned int detect_thrd;
+  unsigned int super_bad_thrd;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct isp_bpc_thrd {
+  unsigned int flat;
+  unsigned int std;
+  unsigned int texture;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_interrupt {
+  unsigned int isp_id;
+  unsigned int int_mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_reg_bits {
+  unsigned long reg_addr;
+  unsigned long reg_value;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_reg_param {
+  unsigned long reg_param;
+  unsigned int counts;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct thrd_min_max {
+  unsigned int min;
+  unsigned int max;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_dev_rgb_afm_info {
+  unsigned int bypass;
+  unsigned int mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int skip_num;
+  unsigned int data_update_sel;
+  unsigned int iir_eb;
+  unsigned int overflow_protect_en;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int touch_mode;
+  struct isp_img_size frame_size;
+  struct isp_coord win[ISP_AFM_WIN_NUM];
+  unsigned short iir_g0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned short iir_g1;
+  unsigned short iir_c[10];
+  unsigned int channel_sel;
+  unsigned int fv0_enhance_mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int fv1_enhance_mode;
+  unsigned int denoise_mode;
+  unsigned int center_weight;
+  unsigned int clip_en0;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int clip_en1;
+  unsigned int fv0_shift;
+  unsigned int fv1_shift;
+  struct thrd_min_max fv0_th;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct thrd_min_max fv1_th;
+  unsigned int fv1_coeff[4][9];
+};
+struct af_enhanced_module_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned char chl_sel;
+  unsigned char nr_mode;
+  unsigned char center_weight;
+  unsigned char fv_enhanced_mode[2];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned char clip_en[2];
+  unsigned int max_th[2];
+  unsigned int min_th[2];
+  unsigned char fv_shift[2];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  char fv1_coeff[36];
+};
+struct af_iir_nr_info {
+  unsigned char iir_nr_en;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  short iir_g0;
+  short iir_c1;
+  short iir_c2;
+  short iir_c3;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  short iir_c4;
+  short iir_c5;
+  short iir_g1;
+  short iir_c6;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  short iir_c7;
+  short iir_c8;
+  short iir_c9;
+  short iir_c10;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct skip_ctrl_param {
+  unsigned int sdw_done_int_cnt_num;
+  unsigned int sdw_down_skip_cnt_num;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int all_done_int_cnt_num;
+  unsigned int all_done_skip_cnt_num;
+};
+struct skip_ctrl1_param {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int vid_done_int_cnt_num;
+  unsigned int vid_done_skip_cnt_num;
+};
+enum SCINFO_COLOR_ORDER {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  COLOR_ORDER_RG = 0,
+  COLOR_ORDER_GR,
+  COLOR_ORDER_GB,
+  COLOR_ORDER_BG
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct isp_raw_proc_info {
+  struct isp_img_size in_size;
+  struct isp_img_size out_size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct isp_addr img_vir;
+  struct isp_addr img_offset;
+  unsigned int img_fd;
+  unsigned int sensor_id;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+#endif
